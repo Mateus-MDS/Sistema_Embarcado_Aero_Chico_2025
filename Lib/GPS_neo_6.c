@@ -1,6 +1,5 @@
 /**
  * GPS NEO-6 Simple Library Implementation
- * Versão simplificada mantendo apenas as funções essenciais
  */
 
 #include "GPS_neo_6.h"
@@ -306,3 +305,4 @@ double get_gps_z(void) {
 double get_gps_velocity(void) {
     return gps_data.velocity;
 }
+
