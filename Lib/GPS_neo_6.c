@@ -1,11 +1,11 @@
 /**
  * GPS NEO-6 Simple Library Implementation
- * Vers„o simplificada mantendo apenas as funÁıes essenciais
+ * Vers√£o simplificada mantendo apenas as fun√ß√µes essenciais
  */
 
 #include "GPS_neo_6.h"
 
-// ConfiguraÁıes do GPS
+// Configura√ß√µes do GPS
 #define GPS_UART_ID uart1
 #define GPS_BAUD_RATE 9600
 #define GPS_TX_PIN 4
@@ -19,7 +19,7 @@ static int buffer_index = 0;
 // Dados GPS globais
 static gps_data_t gps_data = {0};
 
-// Origem para convers„o XY
+// Origem para convers√£o XY
 static double origin_lat = 0.0;
 static double origin_lon = 0.0;
 static bool origin_set = false;
@@ -28,7 +28,7 @@ static bool origin_set = false;
 #define EARTH_RADIUS 6371000.0
 #define DEG_TO_RAD (3.14159265358979323846 / 180.0)
 
-// ==================== FUN«’ES INTERNAS ====================
+// ==================== FUN√á√ïES INTERNAS ====================
 
 static void latlon_to_xy(double latitude, double longitude, double lat0, double lon0, double* XGPS, double* YGPS) {
     double dLat = (latitude - lat0) * DEG_TO_RAD;
@@ -214,7 +214,7 @@ static void process_nmea_sentence(const char* sentence) {
     }
 }
 
-// ==================== FUN«’ES P⁄BLICAS ====================
+// ==================== FUN√á√ïES P√öBLICAS ====================
 
 void gps_init(void) {
     uart_init(GPS_UART_ID, GPS_BAUD_RATE);
@@ -259,18 +259,18 @@ void display_gps_data(void) {
 
     printf("\n======= GPS DATA =======\n");
     if (gps_data.valid_fix) {
-        printf("STATUS: GPS FIX V¡LIDO\n");
+        printf("STATUS: GPS FIX V√ÅLIDO\n");
         printf("Longitude (graus): %.8f\n", gps_data.longitude);
         printf("Latitude  (graus): %.8f\n", gps_data.latitude);
         printf("XGPS (m, Leste desde origem): %.2f m\n", gps_data.XGPS);
         printf("YGPS (m, Norte desde origem): %.2f m\n", gps_data.YGPS);
         printf("ZGPS (Altitude): %.2f m\n", gps_data.ZGPS);
         printf("Tempo UTC: %s\n", time_utc_formatted);
-        printf("Tempo BrasÌlia: %s\n", gps_data.time_br);
+        printf("Tempo Bras√≠lia: %s\n", gps_data.time_br);
         printf("Segundos: %u s\n", gps_data.time_seconds);
         printf("Data: %s\n", date_formatted);
         printf("Velocidade: %.2f km/h\n", gps_data.velocity);
-        printf("SatÈlites: %s\n", gps_data.satellites);
+        printf("Sat√©lites: %s\n", gps_data.satellites);
 
         printf("\nDADOS COMPACTOS:\n");
         printf("Lon=%.8f,Lat=%.8f,X=%.2f,Y=%.2f,Z=%.2f,T=%s,S=%u,V=%.2f\n",
@@ -282,7 +282,7 @@ void display_gps_data(void) {
     printf("========================\n\n");
 }
 
-// FunÁıes especÌficas - mais simples e eficientes
+// Fun√ß√µes espec√≠ficas - mais simples e eficientes
 bool is_gps_valid(void) {
     return gps_data.valid_fix;
 }
