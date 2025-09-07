@@ -1,6 +1,5 @@
 /**
- * Exemplo SIMPLES de uso da biblioteca GPS NEO-6
- * Agora com funções específicas - mais simples e menos memória!
+ * Sistema embarcado
  */
 
 #include <stdio.h>
@@ -18,9 +17,9 @@ int main() {
         
         read_gps_data();
         
-        // Verifica se GPS tem fix válido
+        // Verifica se GPS tem fix vÃ¡lido
         if (is_gps_valid()) {
-            // Dados para o cartão SD
+            // Dados para o cartÃ£o SD
             uint32_t tempo = get_gps_time_seconds();
             double xgps = get_gps_x();
             double ygps = get_gps_y(); 
@@ -31,14 +30,15 @@ int main() {
             printf("Aguardando GPS...\n");
         }
 
-        //Exibição de parâmetros
+        //ExibiÃ§Ã£o de parÃ¢metros
         uint32_t now = to_ms_since_boot(get_absolute_time());
         if (now - last_display > 2000) {
             display_gps_data();
             last_display = now;
         }
         
-        // Acima de 40 o GPS não funciona
+        // Acima de 40 o GPS nÃ£o funciona
         sleep_ms(30);
     }
+
 }
