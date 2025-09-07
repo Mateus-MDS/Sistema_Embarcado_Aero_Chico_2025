@@ -1,5 +1,5 @@
 /**
- * GPS NEO-6 Simple Library para Raspberry Pi Pico
+ * GPS NEO-6
  * Biblioteca simples para leitura de dados GPS
  */
 
@@ -22,7 +22,7 @@ typedef struct {
     double YGPS;         // metros, Norte desde origem  
     double ZGPS;         // altitude em metros
     char time[12];       // UTC
-    char time_br[12];    // Brasília
+    char time_br[12];    // BrasÃ­lia
     uint32_t time_seconds;
     double velocity;     // km/h
     bool valid_fix;
@@ -30,17 +30,18 @@ typedef struct {
     char date[8];
 } gps_data_t;
 
-// Funções públicas principais
+// FunÃ§Ãµes pÃºblicas principais
 void gps_init(void);
 void read_gps_data(void);
 void display_gps_data(void);
 
-// Funções específicas para seus dados (mais simples)
+// FunÃ§Ãµes especÃ­ficas para seus dados (mais simples)
 bool is_gps_valid(void);
 uint32_t get_gps_time_seconds(void);
 double get_gps_x(void);
 double get_gps_y(void);
 double get_gps_z(void);
 double get_gps_velocity(void);
+
 
 #endif // GPS_NEO_6_H
